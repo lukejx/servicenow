@@ -27,7 +27,4 @@ gs.addInfoMessage(“New Workflow created successfully! “ + gr.number);
 
 }
 
-/* ---------  Continue --------- */
-                  .
-                  .
-                  .
+/* ---------  END --------- */
