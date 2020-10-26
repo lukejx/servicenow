@@ -34,11 +34,7 @@ checkAdditionalCommentsCase.prototype = Object.extendsObject(global.AbstractAjax
 * Module: Client Script
 */
 
-// Call your Script Include (checkAdditionalCommentsCase) via Client Script using GlideAjax api
-
-// Call the Script Include checkAdditionalCommentsCase
-// To validate the inserted comment and avoid duplicate comment.
-// INC2576420
+// Call your Script Include (checkAdditionalCommentsCase) via Client Script using GlideAjax api to validate the inserted comment and avoid duplicate comment.
 
 var ga = new GlideAjax(‘global.checkAdditionalCommentsCase’);
 ga.addParam(‘sysparm_name’, ‘getComment’);
