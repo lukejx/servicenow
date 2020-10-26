@@ -1,3 +1,11 @@
+
+/*------------ Begins -------------*/
+
+/* 
+* Module: Background Script or Xplore
+*/
+
+
 // How to cancel a WF and Start another one for the same record
 
 var gr = new GlideRecord(“yourTable”); // Access your table.
@@ -18,3 +26,8 @@ var context = newWorkflow.startFlow(‘93522c0cdbcf5f00b3cd73e1ba9619e1’, gr, 
 gs.addInfoMessage(“New Workflow created successfully! “ + gr.number);
 
 }
+
+/* ---------  Continue --------- */
+                  .
+                  .
+                  .
