@@ -17,7 +17,7 @@
     var grCR = new GlideRecord('change_request');
     if (grCR.get(current.rfc)) {
         grCR.setValue('parent', problemNumber);
-        grCR.update(); // TESTE LUCAS A
+        grCR.update();
     }
 
 })(current, previous);
