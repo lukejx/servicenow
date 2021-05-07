@@ -1,45 +1,4 @@
-var gerarRITM = Class.create();
-gerarRITM.prototype = {
-	initialize: function() {},
-
-	generateCart: function(record) {
-		var validationItems = JSON.parse(record.variables.teste_gerar_ritms);
-
-		//gs.info(validationItems[1].quantidade);
-		for (i in validationItems) {
-			var quant = parseInt(validationItems[i].quantidade);
-			//gs.info(quant);
-			for (y = 0; y < quant; y++) {
-				//gs.info('number :'+i+ '---'  + 1);
-				//validationItems[i].quantidade = quantidade = '1';
-
-				var cart = new Cart();
-				var item = cart.addItem('3162c8d42f81201058ad59a72799b608');
-				//cart.setVariable(item, 'teste_gerar_ritms', '[{' + validationItems[i] + '}]');
-				//cart.setVariable(item, 'teste_gerar_ritms', [{"equipamentos":"Teste","quantidade":"12"},{"equipamentos":"Rainer","quantidade":"50"}]);
-				var order = cart.placeOrder().getUniqueValue() + '';
-				var ritm = new GlideRecord("sc_req_item");
-				if (ritm.get("request", order)) {
-					var mr = ritm.variables.teste_gerar_ritms;
-					var newRow = mr.addRow();
-					newRow.equipamentos = validationItems[i].equipamentos+'';
-					newRow.quantidade = "1";
-					ritm.setValue('request', record.request);
-					//ritm.setValue('parent', record.request);
-					ritm.update();
-				}
-
-			}
-		}
-
-	},
-
-	type: 'gerarRITM'
-};
-
-
-
--> Esse acima gera RITMS para cada linha de acordo com um campo quantidade
+/*------------ Begins Script Include-------------*/
 
 var generatorRITM = Class.create();
 generatorRITM.prototype = {
@@ -72,7 +31,7 @@ generatorRITM.prototype = {
 	generateCart: function(record) {
 		
 		var requestsGenerated = [];
-		var validationItems = JSON.parse(record.variables.equipment_request);
+		var validationItems = JSON.parse(record.variables.equipment_request); // (equipment_request is the name of your mrvs)
 		for (i in validationItems) {
 			
 			var cart = new Cart();
@@ -104,3 +63,5 @@ generatorRITM.prototype = {
 	},
 	type: 'generatorRITM'
 };
+
+/*------------ END -------------*/
