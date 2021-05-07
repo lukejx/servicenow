@@ -65,3 +65,25 @@ generatorRITM.prototype = {
 };
 
 /*------------ END -------------*/
+
+
+/*-- CALL ON RUN SCRIPT AT WORKFLOW --*/
+
+// Call Script Include generatorRITM
+var include = new generatorRITM().generateCart(current);
+
+// Delete Principal RITM
+var grScReqItem = new GlideRecord('sc_req_item');
+if (grScReqItem.get(current.getUniqueValue())) {
+    grScReqItem.deleteRecord();
+}
+
+// Delete REQs
+var grScRequest = new GlideRecord('sc_request');
+grScRequest.addEncodedQuery("sys_idIN" + include.join(','));
+grScRequest.query();
+while (grScRequest.next()) {
+    grScRequest.deleteRecord();
+}
+
+/*------------ END -------------*/
